@@ -6,29 +6,24 @@ class LinksController < ApplicationController
   end
 
   def show
-  end
-
-  def create
-    if params[:url] != nil
-      find = Link.find_by_url(params[:url])
-
-      if find
-        redirect_to find.url
-      else
-        link = Link.create(
-          url: params[:url],
-          visit: 0
-        )
-      end
-      
-      if link
-        render :json => "{'url': ''#{params[:url]}'}'"
-      end
+    link = Link.find(params[:id])
+    if link != nil
+      redirect_to "http://#{link.url}"
     end
   end
 
-  private
-  def check_has_url
+  def create
+    link = Link.find_by_url(params[:url])
+
+    if link == nil
+      link = Link.create(
+        url: params[:url],
+        visit: 0
+      )
+    end
     
+    if link
+      render :json => "{'url': '#{params[:url]}'}"
+    end
   end
 end
