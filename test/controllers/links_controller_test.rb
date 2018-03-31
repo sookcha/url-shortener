@@ -2,17 +2,24 @@ require 'test_helper'
 
 class LinksControllerTest < ActionDispatch::IntegrationTest
   test "should get index" do
-    get links_index_url
+    get "/1"
     assert_response :success
   end
 
-  test "should get show" do
-    get links_show_url
+  test "should show stats" do
+    get "/1/stats"
     assert_response :success
   end
 
-  test "should get create" do
-    get links_create_url
+  test "should make url into database" do
+    post "register.json?link=http://www.vingle.net"
+    assert_response :success
+  end
+
+  test "should get a generated url" do
+    post "register.json?link=http://www.vingle.net"
+    post "register.json?link=http://www.vingle.net"
+
     assert_response :success
   end
 

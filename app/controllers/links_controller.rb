@@ -1,4 +1,6 @@
 class LinksController < ApplicationController
+  skip_before_action :verify_authenticity_token
+
   def index
     render :json => Link.all
   end
@@ -10,6 +12,4 @@ class LinksController < ApplicationController
     render :json => params[:url]
   end
 
-  private
-  skip_before_action :verify_authenticity_token
 end
