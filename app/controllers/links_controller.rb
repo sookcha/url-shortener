@@ -1,17 +1,11 @@
 class LinksController < ApplicationController
   skip_before_action :verify_authenticity_token
 
-  def index
-    link = Link.find(params[:id])
-    
-    render :json => Link.all
-  end
-
   def show
     link = Link.find(params[:id])
-    # Update visit count
-    link.update(
-      visit: link.visit + 1
+    # Add visit counting
+    Stat.create(
+      link_id: link.id
     )
 
     # If link found, redirect to that link
