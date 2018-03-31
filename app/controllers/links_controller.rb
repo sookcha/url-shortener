@@ -2,6 +2,8 @@ class LinksController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def index
+    link = Link.find(params[:id])
+    
     render :json => Link.all
   end
 
