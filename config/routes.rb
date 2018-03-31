@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  get 'stats/index'
-
   post 'register.json', to: "links#create"
 
   get '/:id', to: "links#show"
