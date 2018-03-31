@@ -6,7 +6,7 @@ A simple url shortener.
 
 Install `gems`
 
-> gem install
+> bundle
 
 Migrate using `rake`
 
