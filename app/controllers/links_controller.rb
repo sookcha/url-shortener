@@ -30,6 +30,7 @@ class LinksController < ApplicationController
       link = Link.create!(
         url: params[:url]
       )
+      # Status: Created
       status = 201
     end
     
