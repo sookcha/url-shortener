@@ -1,3 +1,3 @@
 class Link < ApplicationRecord
-    belongs_to "stat
+    belongs_to :stat
 end

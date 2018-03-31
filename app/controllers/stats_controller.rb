@@ -1,6 +1,6 @@
 class StatsController < ApplicationController
   def index
-    link = Stat.find_by(link_id: params[:id])
+    link = Stat.where(link_id: params[:id]).all
 
     if link != nil
       render :json => link
