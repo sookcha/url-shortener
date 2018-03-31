@@ -9,8 +9,13 @@ class LinksController < ApplicationController
         link_id: link.id
       )
 
+      # If a link does not have http:// or https://, add http to the link.
+      unless link.url.include?("http://") || link.url.include?("https://")
+        link.url = "http://" + link.url
+      end
+
       # If link found, redirect to that link
-      redirect_to "http://#{link.url}"
+      redirect_to "#{link.url}"
     else
       render :json => "{msg: 'Not Found'}", :status => 404
     end
@@ -20,7 +25,7 @@ class LinksController < ApplicationController
     link = Link.find_by_url(params[:url])
     # If don't have link, create it
     status = 200
-    
+
     if link == nil
       link = Link.create!(
         url: params[:url]
