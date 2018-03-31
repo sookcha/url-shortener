@@ -20,8 +20,7 @@ class LinksController < ApplicationController
     # If don't have link, create it
     if link == nil
       link = Link.create(
-        url: params[:url],
-        visit: 0
+        url: params[:url]
       )
     end
     
