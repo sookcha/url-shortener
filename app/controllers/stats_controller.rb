@@ -14,7 +14,7 @@ class StatsController < ApplicationController
     if links != nil
       render :json => data
     else
-      render :json => "{msg: 'Not Found'}"
+      render :json => "{msg: 'Not Found'}", :status => 404
     end
   end
 end
