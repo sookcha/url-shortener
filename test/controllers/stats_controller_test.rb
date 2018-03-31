@@ -2,7 +2,8 @@ require 'test_helper'
 
 class StatsControllerTest < ActionDispatch::IntegrationTest
   test "should get index" do
-    get stats_index_url
+    post "http://localhost:3000/register.json?url=google.com"
+    get "http://localhost:3000/1/stats"
     assert_response :success
   end
 
