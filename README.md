@@ -1,24 +1,17 @@
-# README
+# url-shortener
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A simple url shortener.
 
-Things you may want to cover:
+## Usage
 
-* Ruby version
+Install `gems`
 
-* System dependencies
+> gem install
 
-* Configuration
+Migrate using `rake`
 
-* Database creation
+> rake db:migrate
 
-* Database initialization
+Run with Rails server!
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+> rails server
