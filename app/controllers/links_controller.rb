@@ -19,15 +19,18 @@ class LinksController < ApplicationController
   def create
     link = Link.find_by_url(params[:url])
     # If don't have link, create it
+    status = 200
+    
     if link == nil
       link = Link.create!(
         url: params[:url]
       )
+      status = 201
     end
     
     # If we got a link, show that to user
     if link != nil
-      render :json => "{'url': '#{request.base_url.gsub(" ","")}/#{link.id}'}"
+      render :json => "{'url': '#{request.base_url.gsub(" ","")}/#{link.id}'}", :status => status
     else
       render :json => "{msg: 'Not Found'}", :status => 404
     end
